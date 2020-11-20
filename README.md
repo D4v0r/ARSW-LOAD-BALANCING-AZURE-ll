@@ -42,10 +42,58 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 **Preguntas**
 
 * ¿Qué es un Azure Function?
+
+    **Azure Functions** permite ejecutar pequeñas piezas de código (llamadas "funciones") sin preocuparse por la infraestructura de la aplicación. Con Azure Functions, la infraestructura de la nube proporciona todos los servidores actualizados que necesitas para mantener tu aplicación funcionando a escala.
+
+
 * ¿Qué es serverless?
+
+    El término **serverless** se emplea para referirse al modelo de computación según el cual el proveedor de la capa de computación nos permite ejecutar durante un periodo de tiempo determinado porciones de código denominadas "funciones" sin necesidad de hacernos cargo de la infraestructura subyacente que se provisiona para dar el servicio. En este modelo, el proveedor se encarga de ofrecer los recursos de forma transparente, de escalarlos automáticamente si crece la demanda y de liberarlos cuando no son utilizados, definiendo una serie de restricciones referentes al procesamiento y un modelo de pago por el consumo de los recursos derivados de la ejecución.
+    
+    
 * ¿Qué es el runtime y que implica seleccionarlo al momento de crear el Function App?
+
+    Representa el intervalo de tiempo en el que un programa de computadora se ejecuta en un sistema operativo. En Azure esta principalmente está relacionado con la versión de .NET en la que se basa el tiempo de ejecución. Al seleccionar el plan Consumption y la versión de runtime 2, implica que su "timeout duration" es de 5 minutos.
+
+
 * ¿Por qué es necesario crear un Storage Account de la mano de un Function App?
+
+    Es necesario debido a que el Storage Account nos proporciona un espacio de nombres unico para poder almacenar todos los datos provenientes de Azure Storage, consulatados mediante HTTP.
+    
+    
 * ¿Cuáles son los tipos de planes para un Function App?, ¿En qué se diferencias?, mencione ventajas y desventajas de cada uno de ellos.
+
+    A. **Plan de consumo**: Cuando se usa el plan de consumo, las instancias del host de Azure Functions se agregan y quitan de forma dinámica según el número de eventos entrantes. Este plan sin servidor se escala automáticamente y solo se le cobra por los recursos de proceso cuando se ejecutan las funciones. En un plan de consumo, se agota el tiempo de espera de una ejecución.
+     - Ventajas:
+        1. Pague solo cuando se ejecutan las funciones.
+        2. Escale horizontalmente de forma automática, incluso durante períodos de gran carga.
+        
+    B. **Plan Premium**: Cuando se usa el plan Prémium, las instancias del host de Azure Functions se agregan y quitan según el número de eventos entrantes al igual que con el plan de consumo.
+    - Ventajas:
+        1. Constancias permanentemente semiactivas para evitar cualquier inicio en frío.
+        2. Conectividad de red virtual.
+        3. Duración de la ejecución ilimitada (60 minutos garantizados).
+        4. Tamaños de la instancia Prémium (un núcleo, dos núcleos y cuatro instancias de núcleo).
+        5. Precios más previsibles.
+        6. Asignación de aplicaciones de alta densidad para planes con varias aplicaciones de funciones.
+        
+    C. **Plan Dedicado (App Service)**: Sus aplicaciones de funciones también pueden ejecutarse en las mismas máquinas virtuales dedicadas que otras aplicaciones de App Service (SKU básica, estándar, prémium y aislada).
+    - Ventajas:
+        1. Tiene máquinas virtuales infrautilizadas que ya ejecutan otras instancias de App Service.
+        2. Se puede proporcionar una imagen personalizada en la que ejecutar sus funciones.
+    
+     La diferencia de ellos radica en los distintos enfoques que cada cual tiene,por ejemplo, el Plan de Consumo es el plan más sencillo el cual se basa exclusivamente de acuerdo a la demanda del usuario, el Plan Premium está basado en le hecho de tener memoria para poder reutilizar los trabajos anteriores y el Plan Dedicado está enfocado para quienes necesitan ejecutar tareas que tienen una duracion considerable.
+        
 * ¿Por qué la memoization falla o no funciona de forma correcta?
+
+    La memorización no funcionó correctamente debido a que después de un lapso de tiempo de no hacer ninguna petición la memorización de borró estando obligada a recalcular el valor.
+    
+    
 * ¿Cómo funciona el sistema de facturación de las Function App?
+    
+    - **Ejecuciones**: Se Factura en base al numero total de ejecuciones solicitadas cada mes para las funciones.
+
+    - **Consumo de recursos**: Se factura en base a la memoria promedio en GB/s por tiempo que se demora en ejecutar la tarea.
+
+    - **Premium**: En este plan se factura en base a la CPU y la memoria que utiliza la function app.
 * Informe
