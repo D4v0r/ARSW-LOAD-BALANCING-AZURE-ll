@@ -39,6 +39,14 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 6. Cree una nueva Function que resuleva el problema de Fibonacci pero esta vez utilice un enfoque recursivo con memoization. Pruebe la función varias veces, después no haga nada por al menos 5 minutos. Pruebe la función de nuevo con los valores anteriores. ¿Cuál es el comportamiento?.
 
+    Implementación:
+    
+    ![](https://media.discordapp.net/attachments/778382673341186090/779176447201116190/unknown.png?width=1048&height=629)
+    
+    Al probar la función los primeros 5 minutos el tiempo de respuesta va decrementando, demostrando que la memorización está funcionando.
+    
+    Al pasar los otros 5 minutos y volver a probar, el comportamiento es el mismo, debido a que la azure function limpia la memoria y con ello se pierden los valores previamente calculados.
+
 **Preguntas**
 
 * ¿Qué es un Azure Function?
@@ -97,3 +105,10 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     - **Premium**: En este plan se factura en base a la CPU y la memoria que utiliza la function app.
 * Informe
+    * 10 Peticiones concurrentes:
+    ![](https://cdn.discordapp.com/attachments/778382673341186090/779169635362144286/unknown.png)
+    ![](https://cdn.discordapp.com/attachments/778382673341186090/779169668455464960/unknown.png)
+    ![](https://cdn.discordapp.com/attachments/778382673341186090/779169710557626398/unknown.png)
+
+    El tiempo promedio de respuesta de las diez peticiones concurrentes fue de 3 minutos con 50 segundos, cada una de las peticiones salieron exitosas, el número de la secuencia calculado fue n = 1000000, como podemos observar el algoritmo funciona, requiere demasiado tiempo dar una respuesta, pero no hubo ningun fallo, el uso de la Function App, soporta facilmente las peticiones concurrentes y de alta demanda sin tener que realizar configuraciones adicionales.
+    
