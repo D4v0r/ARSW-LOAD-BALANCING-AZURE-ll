@@ -105,7 +105,9 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     - **Premium**: En este plan se factura en base a la CPU y la memoria que utiliza la function app.
 * Informe
+
     * 10 Peticiones concurrentes:
+    
     ![](https://cdn.discordapp.com/attachments/778382673341186090/779169635362144286/unknown.png)
     ![](https://cdn.discordapp.com/attachments/778382673341186090/779169668455464960/unknown.png)
     ![](https://cdn.discordapp.com/attachments/778382673341186090/779169710557626398/unknown.png)
